@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 marshmallow = "*"
 bcrypt = "*"
 pyjwt = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
