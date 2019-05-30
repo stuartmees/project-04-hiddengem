@@ -1,6 +1,9 @@
 from pony.orm import Required, Optional
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, post_load
 from app import db
+
+from .State import State
+from .Category import Category
 
 class Entry(db.Entity):
     title = Required(str)
@@ -12,6 +15,7 @@ class Entry(db.Entity):
     photo = Optional(str)
     lng = Required(float)
     lat = Required(float)
+    created_by = Optional('User')
 
 class EntrySchema(Schema):
     id = fields.Int(dump_only=True)
@@ -27,3 +31,18 @@ class EntrySchema(Schema):
     photo = fields.String()
     lng = fields.Float(required=True)
     lat = fields.Float(required=True)
+    created_by = fields.Nested('UserSchema', exclude=('entries',))
+
+    @post_load
+    def load_category(self, data):
+        data['category'] = Category.get(id=data['category_id'])
+        del data['category_id']
+
+        return data
+
+    @post_load
+    def load_state(self, data):
+        data['state'] = State.get(id=data['state_id'])
+        del data['state_id']
+
+        return data
