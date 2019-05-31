@@ -6,7 +6,7 @@ from marshmallow import ValidationError
 from models.State import State, StateSchema
 from lib.secure_route import secure_route
 
-router = Blueprint(__name__, 'state')
+router = Blueprint(__name__, 'states')
 
 @router.route('/states', methods=['GET'])
 @db_session
