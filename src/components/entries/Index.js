@@ -18,8 +18,6 @@ class EntriesIndex extends React.Component {
 
     return(
       <div>
-        {this.state.entries.map(entry => <h1 key={entry.id}>{entry.title}</h1>)}
-
         <Map
           style="mapbox://styles/mapbox/streets-v9"
           center={[78.848090, 20.551730]}

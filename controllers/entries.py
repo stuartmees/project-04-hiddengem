@@ -34,8 +34,7 @@ def create():
 
     try:
         data = entry_schema.load(request.get_json())
-        data['created_by'] = g.current_user
-        entry = Entry(**data)
+        entry = Entry(**data, created_by=g.current_user)
         db.commit()
     except ValidationError as err:
         return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422

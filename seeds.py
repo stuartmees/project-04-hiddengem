@@ -67,36 +67,39 @@ with db_session():
     pondicherry = State(name="Pondicherry")
 
     Entry(
-        title="Pushkar",
-        description="Quaint little trading village",
-        town="pushkar",
+        title="Quaint, bustling village perched on ghats.",
+        description='Pushkar has a magnetism all of its own – it’s quite unlike anywhere else in Rajasthan. It is world famous for its spectacular Camel Fair, which takes place in the Hindu month of Kartika (October/November). If you are anywhere nearby at the time you would be crazy to miss it. For the rest of the year Pushkar remains a prominent Hindu pilgrimage town, humming with puja (prayers), bells, drums and devotional songs. The town wraps itself around a holy lake featuring 52 bathing ghats and 400 milky-blue temples, including one of the world’s few Brahma temples. The main street is one long bazaar, selling anything to tickle a traveller’s fancy, from hippy-chic tie-dye to didgeridoos. The result is a muddle of religious and tourist scenes. Yet, despite the commercialism, the town remains enchantingly mystic and relaxed. Pushkar is only 11km from Ajmer, separated from it by rugged Nag Pahar (Snake Mountain)',
+        location="Pushkar, Rajasthan, India",
         state=rajastan,
         category=going,
         lng=74.557300,
         lat=26.492000,
-        created_by=stuseem
+        created_by=stuseem,
+        photo="https://www.travelogyindia.com/images/rajasthan/pushkar-tipl.jpg"
     )
 
     Entry(
-        title="Varkhala",
-        description="Unique and stunning cliff backed beach. Shops and restaurants dotted along the top of the cliff",
-        town="Varkhala",
+        title="Unique and stunning cliff backed beach.",
+        description="Perched almost perilously along the edge of majestic 15m-high red laterite cliffs, 50km northwest of Trivandrum, Varkala has a naturally beautiful setting that has allowed it to steadily grow into Kerala's most popular backpacker hang-out. A small strand of golden beach nuzzles Varkala's North Cliff area, where restaurants play innocuous world music and shops sell elephant-stamped trousers, silver jewellery and cotton yoga-mat bags. While it's certainly on the beaten track and the sales pitch can be tiring, Varkala is still a great place to watch the days slowly turn into weeks, and it's easy to escape the crowds further north or south where the beaches are cleaner and quieter.",
+        location="Varkala, Kerala, India",
         state=kerala,
         category=going,
         lng=76.725500,
         lat=8.734150,
-        created_by=stacrus
+        created_by=stacrus,
+        photo="https://media-cdn.tripadvisor.com/media/photo-s/0e/15/20/f7/varkala-cliff.jpg"
     )
 
     Entry(
-        description="Near perfect crescent moon shaped beach!!",
+        description="Palolem is undoubtedly one of Goa’s most postcard-perfect beaches: a gentle curve of palm-fringed sand facing a calm bay. But in season the beachfront is transformed into a toy town of colourful and increasingly sophisticated timber and bamboo huts fronted by palm-thatch restaurants. It’s still a great place to be and is popular with backpackers, long-stayers and families. The protected bay is one of the safest swimming spots in Goa and you can comfortably kayak and paddleboard for hours here.",
         category=going,
         state=goa,
         lat=15.484280,
-        title="Palolem",
+        title="Near perfect crescent moon shaped beach!!",
         lng=73.823010,
-        town="Palolem",
-        created_by=stuseem
+        location="Palolem Beach, Goa",
+        created_by=stuseem,
+        photo="https://media-cdn.tripadvisor.com/media/photo-s/0d/cf/5e/10/palolem.jpg"
     )
 
     db.commit()
