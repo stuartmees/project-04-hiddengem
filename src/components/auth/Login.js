@@ -34,7 +34,7 @@ class Login extends React.Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="container-form">
         <div>
           <label>Email</label>
           <input
