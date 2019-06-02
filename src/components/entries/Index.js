@@ -20,7 +20,10 @@ class EntriesIndex extends React.Component {
   }
 
   filterEntries(){
-    const re = new RegExp(qs.parse(this.props.location.search).search, 'i')
+    const re = new RegExp(qs.parse(this.props.location.search).search, 'i',)
+    console.log(re)
+    // const whole = new RegExp('\b'+qs.parse(this.props.location.search).search+'\b', 'i',)
+    console.log(new RegExp('b'+qs.parse(this.props.location.search).search, 'i'))
     return this.state.entries.filter(entry => re.test(entry.title))
   }
 

@@ -10,9 +10,23 @@ class Home extends React.Component {
 
   render() {
     return(
-      <div className="container-form">
-        <SearchBar />
+      <div>
+        <section className="container-form">
+          <SearchBar />
+        </section>
+        <section className="columns home-images">
+          <div className="column home-image-1">
+
+          </div>
+          <div className="column home-image-2">
+
+          </div>
+          <div className="column home-image-3">
+
+          </div>
+        </section>
       </div>
+
     )
   }
 }

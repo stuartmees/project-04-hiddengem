@@ -34,44 +34,60 @@ class Register extends React.Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            placeholder="jobloggs"
-            name="username"
-            onChange={this.handleChange}
-          />
+      <form onSubmit={this.handleSubmit} className="form container-form">
+        <div className="field">
+          <label className="label">Username</label>
+          <div className="control">
+            <input
+              className="input"
+              placeholder="jobloggs"
+              name="username"
+              onChange={this.handleChange}
+            />
+          </div>
+        </div>
+        <div className="control">
         </div>
 
-        <div>
-          <label>Email</label>
-          <input
-            placeholder="josephine@bloggs.com"
-            name="email"
-            onChange={this.handleChange}
-          />
+        <div className="field">
+          <label className="label">Email</label>
+          <div className="control">
+            <input
+              className="input"
+              placeholder="josephine@bloggs.com"
+              name="email"
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label>Password</label>
-          <input
-            placeholder="**********"
-            name="password"
-            onChange={this.handleChange}
-          />
+        <div className="field">
+          <label className="label">Password</label>
+          <div className="control">
+            <input
+              className="input"
+              placeholder="**********"
+              name="password"
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
 
-        <div>
-          <label>Password Confirmaiton</label>
-          <input
-            placeholder="**********"
-            name="password_confirmation"
-            onChange={this.handleChange}
-          />
+        <div className="field">
+          <label className="label">Password Confirmaiton</label>
+          <div className="control">
+            <input
+              className="input"
+              placeholder="**********"
+              name="password_confirmation"
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
 
-        <button>Login</button>
+        <div className="form-submit">
+          <button>Register</button>
+        </div>
       </form>
     )
   }

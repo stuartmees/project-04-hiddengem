@@ -127,7 +127,7 @@ class EntriesNew extends React.Component {
 
     console.log(location)
     return(
-      <div className="container-form">
+      <div className="container-form-new">
         <form onSubmit={this.handleSubmit}>
 
           <div className="columns">

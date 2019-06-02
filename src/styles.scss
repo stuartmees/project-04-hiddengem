@@ -22,6 +22,11 @@ $input-shadow: 0px 2px 12px -4px rgba(145,140,145,0.67);
 }
 
 .container-form{
+  width: 30%;
+  margin: 150px auto;
+}
+
+.container-form-new{
   width: 70%;
   margin: auto;
   padding-top: 100px;
@@ -96,4 +101,59 @@ label{
 
 button {
   padding: 15px;
+}
+
+.home-images{
+
+}
+
+.home-image-1{
+  width: 100vw/3;
+  height: 50vh;
+  background-image: url('/assets/home-0.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.home-image-2{
+  width: 100vw/3;
+  height: 50vh;
+  background-image: url('/assets/home-1.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.home-image-3{
+  width: 100vw/3;
+  height: 50vh;
+  background-image: url('/assets/home-2.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.show-title{
+  font-family: $title-font;
+  color: $button-color;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.show-meta{
+  font-family: $default-font-1;
+  text-align: center;
+}
+
+.show-description{
+  font-family: $default-font-1;
+  letter-spacing: 2px;
+}
+
+.show-image{
+  width: 70%;
+  margin: auto;
+}
+
+.container-show>*{
+  margin: 70px 0;
 }
