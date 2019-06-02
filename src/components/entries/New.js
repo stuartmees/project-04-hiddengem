@@ -13,11 +13,19 @@ const categoryOptions = [
 
 const options = {
   accept: 'image/*'
-  // transformations: {
-  //   crop: true,
-  //   circle: true,
-  //   rotate: true
-  // }
+}
+
+const selectStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    border: '0px',
+    boxShadow: '0px 2px 12px -4px rgba(145,140,145,0.67)',
+    fontFamily: 'Montserrat'
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    fontFamily: 'Montserrat'
+  })
 }
 
 class EntriesNew extends React.Component {
@@ -73,8 +81,6 @@ class EntriesNew extends React.Component {
           return component.types.includes('administrative_area_level_1')
         }
 
-        console.log(res.data.result)
-
         const stateName = res.data.result.address_components.filter(checkComponent)[0].long_name
 
         function matchState(state){
@@ -122,83 +128,106 @@ class EntriesNew extends React.Component {
     console.log(location)
     return(
       <div className="container-form">
-          <form onSubmit={this.handleSubmit}>
-            <div className="field">
-              <label className="label">Category</label>
-              <div className="control">
-                <Select
-                  options={categoryOptions}
-                  value={category}
-                  name='category_id'
-                  onChange={this.handleCategoryChange}
-                />
+        <form onSubmit={this.handleSubmit}>
+
+          <div className="columns">
+            <div className="column">
+              <div className="field">
+                <label className="label">Title</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    placeholder="Main tag line!"
+                    name="title"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
             </div>
-
-            <div className="field">
-              <label className="label">Title</label>
-              <div className="control">
-                <input
-                  className="input"
-                  placeholder="Main tag line!"
-                  name="title"
-                  onChange={this.handleChange}
-                />
+            <div className="column">
+              <div className="field">
+                <label className="label">Category</label>
+                <div className="control">
+                  <Select
+                    styles={selectStyles}
+                    options={categoryOptions}
+                    value={category}
+                    name='category_id'
+                    onChange={this.handleCategoryChange}
+                    placeholder='Select a category'
+                  />
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="field">
-              <label className="label">Description</label>
-              <div className="control">
-                <textarea
-                  className="input"
-                  placeholder="What's the deal with this place? What did you love? any tips?"
-                  name="description"
-                  onChange={this.handleChange}
+          <div className="columns">
+            <div className="column">
+              <div className="field">
+                <label className="label">Location</label>
+                <AsyncSelect
+                  name="location"
+                  styles={selectStyles}
+                  loadOptions={this.getLocationOptions}
+                  onChange={this.updateLocation}
+                  placeholder='Type the nearest town, city or place'
                 />
               </div>
-            </div>
-
-
-            <div className="field">
-              <label  className="label">Website</label>
-              <div className="control">
-                <input
-                  className="input"
-                  placeholder="www.greatplace.com"
-                  name="website"
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label  className="label">Website</label>
+                <div className="control">
+                  <input
+                    className="input"
+                    placeholder="www.greatplace.com"
+                    name="website"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
             </div>
-
-            <div className="field">
-              <label className="label">Location</label>
-              <AsyncSelect
-                name="location"
-                loadOptions={this.getLocationOptions}
-                onChange={this.updateLocation}
-              />
-            </div>
-
-            <div className="field">
-              <label className="label">Photo</label>
-              <div className="control">
-                <ReactFilestack
-                  apikey={process.env.FILESTACK_KEY}
-                  buttonText="Upload Photo"
-                  className="button"
-                  options={options}
-                  onSuccess={(result) => this.handleUploadImages(result)}
-                  preload={true}
-                />
+            <div className="column">
+              <div className="field">
+                <label className="label">Description</label>
+                <div className="control">
+                  <textarea
+                    className="textarea"
+                    placeholder="What's the deal with this place? What did you love? any tips?"
+                    name="description"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
-              {this.state.data.photo && <img src={this.state.data.photo} />}
             </div>
+          </div>
 
-            <button className="button">Submit</button>
-          </form>
-        </div>
+          <div className="columns">
+            <div className="column">
+              <div className="field">
+                <label className="label">Photo</label>
+                <div className="control">
+                  <ReactFilestack
+                    apikey={process.env.FILESTACK_KEY}
+                    buttonText="Upload Photo"
+                    className="photo-button"
+                    options={options}
+                    onSuccess={(result) => this.handleUploadImages(result)}
+                    preload={true}
+                  />
+                </div>
+                {this.state.data.photo && <img src={this.state.data.photo} />}
+              </div>
+            </div>
+            <div className="column">
+              <div className="form-submit">
+                <button>Submit</button>
+              </div>
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
     )
   }
 }

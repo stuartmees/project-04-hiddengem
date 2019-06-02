@@ -1,9 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Merienda+One|Julius+Sans+One|Cormorant+Garamond&display=swap');
+
+//Font variables 'Raleway', sans-serif;
+$logo-font: 'Merienda One', cursive;
+$title-font: 'Julius Sans One', sans-serif;
+$default-font-1: 'Montserrat', sans-serif;
+$default-font-2: 'Cormorant Garamond', serif;
+
+
+//Color variables
+$logo-color: #80000f;
+$button-color: #ff9933;
+
+//Shadow variables
+$navbar-shadow: 0 0 9px rgba(0, 0, 0, 0.3);
+$input-shadow: 0px 2px 12px -4px rgba(145,140,145,0.67);
+
+
 .container-show{
   width: 60%;
   margin: auto;
 }
 
 .container-form{
-  width: 30%;
+  width: 70%;
   margin: auto;
+  padding-top: 100px;
+}
+
+.search-bar .input{
+  border-radius: 3px 0 0 3px;
+  padding: 20px;
+  width: 80%;
+}
+
+.search-bar button{
+  border-radius: 0px 3px 3px 0px;
+  flex-grow: 1;
+  padding: 0;
+}
+
+form .input, form .textarea{
+  border-radius: 3px;
+  border: none;
+  box-shadow: $input-shadow;
+  font-family: $default-font-1 ;
+}
+
+form button, form .columns .column button{
+  border-radius: 3px;
+  border: none;
+  background-color: $button-color;
+  color: white;
+  box-shadow: $input-shadow;
+  font-family: $default-font-1;
+  font-size: 15px;
+}
+
+.form-submit{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+form .columns .column .control button{
+  background-color: $logo-color;
+}
+
+label{
+  font-family: $title-font;
+}
+
+.logo{
+  font-family: $logo-font;
+  color: $logo-color;
+}
+
+.navbar{
+  box-shadow: $navbar-shadow;
+}
+
+.navbar-item{
+  font-family: $title-font;
+}
+
+.search-bar{
+  display: flex;
+}
+
+.container-map-search{
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 30%;
+  z-index: 1;
+}
+
+button {
+  padding: 15px;
 }

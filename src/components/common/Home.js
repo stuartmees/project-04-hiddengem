@@ -10,7 +10,9 @@ class Home extends React.Component {
 
   render() {
     return(
-      <SearchBar />
+      <div className="container-form">
+        <SearchBar />
+      </div>
     )
   }
 }

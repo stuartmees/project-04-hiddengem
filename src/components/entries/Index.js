@@ -44,7 +44,10 @@ class EntriesIndex extends React.Component {
 
     return(
       <div>
-        <SearchBar />
+        <div className="container-map-search">
+          <SearchBar />
+        </div>
+
         <Map
           style="mapbox://styles/mapbox/streets-v9"
           center={[78.848090, 20.551730]}

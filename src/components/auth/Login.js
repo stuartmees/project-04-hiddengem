@@ -34,7 +34,7 @@ class Login extends React.Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit} className="container-form">
+      <form onSubmit={this.handleSubmit} className="form container-form">
         <div>
           <label>Email</label>
           <input
@@ -61,8 +61,9 @@ class Login extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-
-        <button>Login</button>
+        <div className="form-submit">
+          <button>Login</button>
+        </div>
       </form>
     )
   }
