@@ -29,9 +29,9 @@ class Navbar extends React.Component{
     return(
       <nav className="navbar">
         <div className="navbar-brand">
-          <div className="navbar-item">
+          {this.props.location.pathname!=='/' && <div className="navbar-item">
             <Link to="/" className="is-size-4 logo">Hidden Gem</Link>
-          </div>
+          </div>}
           <a role="button"
             className={`navbar-burger${this.state.active ? ' is-active' : ''}`} onClick={this.toggleActive}>
             <span aria-hidden="true"></span>

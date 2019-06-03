@@ -9,6 +9,12 @@ const Map = ReactMapboxGl({
   accessToken: process.env.MAPBOX_ACCESS_TOKEN
 })
 
+const popUpStyles= {
+  zIndex: '5'
+}
+
+
+
 class EntriesIndex extends React.Component {
   constructor(){
     super()
@@ -65,8 +71,17 @@ class EntriesIndex extends React.Component {
             <Link to={`/entries/${this.state.popup.id}`} key={this.state.popup.id}>
               <Popup
                 coordinates={[this.state.popup.lng, this.state.popup.lat]}
-                offset={{'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]}}>
-                <h1>{this.state.popup.title}</h1>
+                offset={{'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]}}
+                style={popUpStyles}
+              >
+                <div className="columns">
+                  <div className="column">
+                    <img src={this.state.popup.photo}/>
+                  </div>
+                  <div className="column">
+                    <p>{`"${this.state.popup.title}"`}</p>
+                  </div>
+                </div>
               </Popup>
             </Link>
           }

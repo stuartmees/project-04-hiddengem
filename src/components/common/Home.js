@@ -11,6 +11,7 @@ class Home extends React.Component {
   render() {
     return(
       <div>
+        <h1 className="logo">Hidden Gem</h1>
         <section className="container-form">
           <SearchBar />
         </section>
