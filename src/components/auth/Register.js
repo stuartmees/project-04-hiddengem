@@ -8,7 +8,8 @@ class Register extends React.Component {
     super()
 
     this.state = {
-      data: {}
+      data: {},
+      error: {}
     }
 
     this.handleChange=this.handleChange.bind(this)
@@ -17,7 +18,8 @@ class Register extends React.Component {
 
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
-    this.setState( {data} )
+    if(!e.target.value) delete data[e.target.name]
+    this.setState({ data })
   }
 
   handleSubmit(e) {
@@ -26,10 +28,11 @@ class Register extends React.Component {
     axios.post('/api/register', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
+        console.log(res.data.message)
         Flash.setMessage('success', res.data.message)
-        // this.props.history.push('/login')
+        this.props.history.push('/login')
       })
-      .catch(() => this.setState({ error: 'Invalid credentials' }))
+      .catch((res) => this.setState( res.response.data ))
   }
 
   render(){
@@ -49,6 +52,8 @@ class Register extends React.Component {
         </div>
         <div className="control">
         </div>
+        {this.state.error.username &&
+          <div className="error-message">{this.state.error.username}</div>}
 
         <div className="field">
           <label className="label">Email</label>
@@ -61,6 +66,8 @@ class Register extends React.Component {
             />
           </div>
         </div>
+        {this.state.error.email &&
+          <div className="error-message">{this.state.error.email}</div>}
 
         <div className="field">
           <label className="label">Password</label>
@@ -74,6 +81,7 @@ class Register extends React.Component {
           </div>
         </div>
 
+
         <div className="field">
           <label className="label">Password Confirmaiton</label>
           <div className="control">
@@ -85,10 +93,14 @@ class Register extends React.Component {
             />
           </div>
         </div>
+        {this.state.error.password_confirmation &&
+          <div className="error-message">{this.state.error.password_confirmation}</div>}
 
         <div className="form-submit">
           <button>Register</button>
         </div>
+
+
       </form>
     )
   }

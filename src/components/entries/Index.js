@@ -13,8 +13,6 @@ const popUpStyles= {
   zIndex: '5'
 }
 
-
-
 class EntriesIndex extends React.Component {
   constructor(){
     super()
@@ -26,11 +24,11 @@ class EntriesIndex extends React.Component {
   }
 
   filterEntries(){
-    const re = new RegExp(qs.parse(this.props.location.search).search, 'i',)
-    console.log(re)
-    // const whole = new RegExp('\b'+qs.parse(this.props.location.search).search+'\b', 'i',)
-    console.log(new RegExp('b'+qs.parse(this.props.location.search).search, 'i'))
-    return this.state.entries.filter(entry => re.test(entry.title))
+    const term = qs.parse(this.props.location.search).search
+    const re = new RegExp(term, 'i')
+    const wholeRe = new RegExp('\\b'+term+'\\b', 'i')
+
+    return this.state.entries.filter(entry => re.test(entry.title) || wholeRe.test(entry.description))
   }
 
   componentDidMount() {

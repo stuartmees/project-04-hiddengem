@@ -53,6 +53,7 @@ class EntriesNew extends React.Component {
 
   //Sets the selected category's id to state==============================================
   handleCategoryChange(selectedCategory) {
+
     const data = { ...this.state.data, category_id: selectedCategory.value}
     // this.setState({ data: {category_id: selectedCategory.value}
     this.setState( {data} )
@@ -113,10 +114,10 @@ class EntriesNew extends React.Component {
 
     axios.post('/api/entries', this.state.data)
       .then(this.props.history.push('/entries'))
-      .catch(() => this.setState({ error: 'Invalid credentials' }))
+      .catch(() => console.log('errors'))
   }
 
-  //Gets the states from States model one mount
+  //Gets the states from States model on mount
   componentDidMount() {
     axios.get('/api/states')
       .then(res => this.setState({states: res.data}))

@@ -26,10 +26,11 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
+        console.log(res.data.message)
         Flash.setMessage('success', res.data.message)
         this.props.history.push('/entries')
       })
-      .catch(() => this.setState({ error: 'Invalid credentials' }))
+      .catch(error => this.setState(error.response.data))
   }
 
   render(){
@@ -74,6 +75,9 @@ class Login extends React.Component {
         <div className="form-submit">
           <button>Login</button>
         </div>
+
+        {this.state.error &&
+          <div className="error-message">{this.state.error}</div>}
       </form>
     )
   }

@@ -197,3 +197,18 @@ a .mapboxgl-popup-content div div{
   padding: 10px;
   font-family: $default-font-1;
 }
+
+
+//Error handling styles
+.error-message{
+  background-color: rgba($logo-color, 0.2);
+  color: $logo-color;
+  border-radius: 3px;
+  border: none;
+  box-shadow: $input-shadow;
+  font-family: $default-font-1;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin: 20px 0px 15px 0px;
+}

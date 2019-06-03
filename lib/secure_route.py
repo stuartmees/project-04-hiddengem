@@ -15,12 +15,12 @@ def secure_route(func):
 
         except jwt.ExpiredSignatureError:
             # token has expired
-            return jsonify({'message': 'Token expired'}), 401
+            return jsonify({'error': 'Session over. Please log in again.'}), 401
 
         except Exception as err:
             # any other error has occurred
             print(err)
-            return jsonify({'message': 'Unauthorized'}), 401
+            return jsonify({'error': 'Please log in to do this.'}), 401
 
         return func(*args, **kwargs)
 

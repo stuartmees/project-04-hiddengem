@@ -31,8 +31,11 @@ def login():
 
     user = User.get(email=data.get('email'))
 
+    if data.get('password') != data.get('password_confirmation'):
+        return jsonify({'error': 'The passwords do not match. Please try again.'}), 401
+
     if not user or not user.is_password_valid(data.get('password')):
-        return jsonify({'message': 'Unauthorized'}), 401
+        return jsonify({'error': 'Sorry we cannot recognise your details. Please try again.'}), 401
 
     return jsonify({
         'message': f'Welcome back to Hidden Gem, {user.username}',

@@ -33,8 +33,8 @@ class User(db.Entity):
 
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
-    username = fields.Str(required=True)
-    email = fields.Str(required=True)
+    username = fields.Str(required=True, error_messages={'required': 'Please enter a Username'})
+    email = fields.Str(required=True, allow_null=False, error_messages={'required': 'Please enter an email'})
     password = fields.Str(load_only=True)
     password_confirmation = fields.Str(load_only=True)
     entries = fields.Nested('EntrySchema', many=True, exclude=('created_by',))
@@ -46,10 +46,10 @@ class UserSchema(Schema):
     # `validates_schema` used for custom validations
     @validates_schema
     def check_passwords(self, data):
-        if data['password'] and data['password'] != data['password_confirmation']:
+        if data.get('password') and data['password'] != data['password_confirmation']:
             raise ValidationError(
                 field_name='password_confirmation',
-                message=['Does not match']
+                message=['The passwords do not match.']
             )
 
     @validates_schema
@@ -59,9 +59,8 @@ class UserSchema(Schema):
         if user:
             raise ValidationError(
                 field_name='username',
-                message=['Must be unique']
+                message=['That username is already taken.']
             )
-
 
     @validates_schema
     def validate_email(self, data):
@@ -70,15 +69,14 @@ class UserSchema(Schema):
         if user:
             raise ValidationError(
                 field_name='email',
-                message=['Must be unique']
+                message=['That email is already registered.']
             )
-
 
     # logic to perform AFTER validation, but BEFORE save
     # modify the data in some way
     @post_load
     def hash_password(self, data):
-        if data['password']:
+        if data.get('password'):
             data['password_hash'] = self.generate_hash(data['password'])
 
             del data['password']

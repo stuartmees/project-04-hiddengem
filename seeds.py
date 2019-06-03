@@ -79,7 +79,7 @@ with db_session():
     )
 
     Entry(
-        title="Unique and stunning cliff backed beach.",
+        title="Unique and stunning cliff backed beach with bazaar.",
         description="Perched almost perilously along the edge of majestic 15m-high red laterite cliffs, 50km northwest of Trivandrum, Varkala has a naturally beautiful setting that has allowed it to steadily grow into Kerala's most popular backpacker hang-out. A small strand of golden beach nuzzles Varkala's North Cliff area, where restaurants play innocuous world music and shops sell elephant-stamped trousers, silver jewellery and cotton yoga-mat bags. While it's certainly on the beaten track and the sales pitch can be tiring, Varkala is still a great place to watch the days slowly turn into weeks, and it's easy to escape the crowds further north or south where the beaches are cleaner and quieter.",
         location="Varkala, Kerala, India",
         state=kerala,

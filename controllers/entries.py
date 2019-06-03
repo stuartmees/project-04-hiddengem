@@ -37,13 +37,13 @@ def create():
         entry = Entry(**data, created_by=g.current_user)
         db.commit()
     except ValidationError as err:
-        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+        return jsonify({'error': err.messages}), 422
 
     return entry_schema.dumps(entry), 201
 
 @router.route('/entries/<int:entry_id>', methods=['PUT'])
-@secure_route
 @db_session
+@secure_route
 def update(entry_id):
     entry_schema = EntrySchema()
     entry = Entry.get(id=entry_id)
@@ -56,7 +56,7 @@ def update(entry_id):
         entry.set(**data)
         db.commit()
     except ValidationError as err:
-        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+        return jsonify({'error': err.messages}), 422
 
     return entry_schema.dumps(entry), 201
 
@@ -73,6 +73,6 @@ def delete(entry_id):
         entry.delete()
         db.commit()
     except ValidationError as err:
-        return jsonify({'message': 'Validation failed', 'errors': err.messages}), 422
+        return jsonify({'error': err.messages}), 422
 
     return jsonify({'message': 'Entry deleted'}), 201
