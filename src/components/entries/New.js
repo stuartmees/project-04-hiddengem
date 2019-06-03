@@ -3,6 +3,7 @@ import axios from 'axios'
 import Select from 'react-select'
 import AsyncSelect from 'react-select/async'
 import ReactFilestack from 'filestack-react'
+import Auth from '../../lib/Auth'
 
 const categoryOptions = [
   { value: 1, label: 'Sleeping' },
@@ -34,8 +35,9 @@ class EntriesNew extends React.Component {
 
     this.state = {
       data: {
-        location: null
-      }
+
+      },
+      error: {}
     }
 
     this.updateLocation=this.updateLocation.bind(this)
@@ -83,7 +85,6 @@ class EntriesNew extends React.Component {
         }
 
         const stateName = res.data.result.address_components.filter(checkComponent)[0].long_name
-
         function matchState(state){
           return state.name === stateName
         }
@@ -97,7 +98,6 @@ class EntriesNew extends React.Component {
           lat: geoCords.lat,
           lng: geoCords.lng
         }
-
         this.setState( {data} )
       })
   }
@@ -111,10 +111,16 @@ class EntriesNew extends React.Component {
   //Makes the HTTP request to API using the state.data as the body of the request=============
   handleSubmit(e) {
     e.preventDefault()
-
-    axios.post('/api/entries', this.state.data)
-      .then(this.props.history.push('/entries'))
-      .catch(() => console.log('errors'))
+    console.log(this.state.data)
+    const token = Auth.getToken()
+    axios.post('/api/entries', this.state.data, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(() => this.props.history.push('/entries'))
+      .catch((res) => {
+        console.log(res.response.data)
+        this.setState(res.response.data)
+      })
   }
 
   //Gets the states from States model on mount
@@ -126,7 +132,6 @@ class EntriesNew extends React.Component {
   render() {
     const { category } = this.state.data
 
-    console.log(location)
     return(
       <div className="container-form-new">
         <form onSubmit={this.handleSubmit}>
@@ -144,7 +149,11 @@ class EntriesNew extends React.Component {
                   />
                 </div>
               </div>
+              {this.state.error.title &&
+                <div className="error-message">{this.state.error.title}</div>}
             </div>
+
+
             <div className="column">
               <div className="field">
                 <label className="label">Category</label>
@@ -159,6 +168,8 @@ class EntriesNew extends React.Component {
                   />
                 </div>
               </div>
+              {this.state.error.category_id &&
+                <div className="error-message">{this.state.error.category_id}</div>}
             </div>
           </div>
 
@@ -174,6 +185,8 @@ class EntriesNew extends React.Component {
                   placeholder='Type the nearest town, city or place'
                 />
               </div>
+              {this.state.error.location &&
+                <div className="error-message">{this.state.error.location}</div>}
               <div className="field">
                 <label  className="label">Website</label>
                 <div className="control">
@@ -198,6 +211,8 @@ class EntriesNew extends React.Component {
                   />
                 </div>
               </div>
+              {this.state.error.description &&
+                <div className="error-message">{this.state.error.description}</div>}
             </div>
           </div>
 
