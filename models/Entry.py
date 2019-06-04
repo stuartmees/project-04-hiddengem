@@ -21,7 +21,7 @@ class EntrySchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.String(required=True, allow_null=False, error_messages={'required': 'Please enter a title'})
     description = fields.String(required=True, allow_null=False, error_messages={'required': 'Please write a description'})
-    location = fields.String(required=True, error_messages={'required': 'Please enter an a location'})
+    location = fields.String(required=True, allow_null=False, error_messages={'required': 'Please enter an a location'})
     state = fields.Nested('StateSchema', exclude=('entries',), dump_only=True)
     state_id = fields.Int(load_only=True)
     category = fields.Nested('CategorySchema', exclude=('entries',), dump_only=True)

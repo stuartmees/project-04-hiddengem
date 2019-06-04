@@ -79,6 +79,10 @@ form button, form .columns .column button{
   font-size: 15px;
 }
 
+form button:hover, form .columns .column button:hover{
+  box-shadow: $input-shadow-press;
+}
+
 .form-submit{
   display: flex;
   flex-direction: row-reverse;
@@ -123,14 +127,6 @@ button:hover{
 }
 
 
-
-
-
-
-
-.home-images{
-
-}
 
 .home-image-1{
   width: 100vw/3;
@@ -183,6 +179,12 @@ button:hover{
   margin: 70px 0;
 }
 
+.text-link{
+  padding: 15px 0 0 15px;
+  font-family: $default-font-1;
+  color: $button-color;
+}
+
 //Popup styling
 a .mapboxgl-popup-content{
   box-shadow: $input-shadow;
@@ -222,5 +224,7 @@ a .mapboxgl-popup-content div div{
   height: 15vh;
   font-family: $default-font-1;
   color: $logo-color;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

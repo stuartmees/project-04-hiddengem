@@ -5,7 +5,9 @@
   "scripts": {
     "run:client": "webpack-dev-server --mode=development",
     "run:server": "pipenv run flask run --port 4000",
-    "build": "webpack -p"
+    "run:flask": "pipenv run flask run -p 4000",
+    "build": "webpack -p",
+    "postinstall": "webpack-dev-server"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,6 +17,7 @@
     "axios": "^0.18.0",
     "babel-loader": "^8.0.6",
     "bulma": "^0.7.5",
+    "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "dotenv": "^8.0.0",
     "dotenv-webpack": "^1.7.0",

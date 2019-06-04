@@ -8,15 +8,19 @@ class EntriesShow extends React.Component {
     this.state = null
   }
 
-  componentDidMount(){
+  componentDidMount(prevProps){
     axios.get(`/api/entries/${this.props.match.params.id}`)
-      .then(res => this.setState(res.data))
+      .then(res => {
+        this.setState(res.data)
+        console.log(prevProps)
+      })
   }
 
   render(){
     if(!this.state) return <p>Loading...</p>
     return(
       <div>
+        <div className="text-link" onClick={this.props.history.goBack}>&larr; Back to map</div>
         <div className="container-show">
           <section>
             <h1 className="show-title">{this.state.title}</h1>
