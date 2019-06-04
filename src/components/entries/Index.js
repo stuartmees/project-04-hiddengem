@@ -106,3 +106,5 @@ export default EntriesIndex
 // {this.state.entries.map(entry =>
 //
 // )}
+
+                    // <img src={this.state.popup.photo}/>

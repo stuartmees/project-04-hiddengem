@@ -196,6 +196,26 @@ class EntriesNew extends React.Component {
                   />
                 </div>
               </div>
+              <div className="field">
+                <div className="columns">
+                  <div className="column">
+                    <label className="label">Photo</label>
+                  </div>
+                  <div className="column">
+                    <div className="control photo-button-container">
+                      <ReactFilestack
+                        apikey={process.env.FILESTACK_KEY}
+                        buttonText="Upload Photo"
+                        className="photo-button"
+                        options={options}
+                        onSuccess={(result) => this.handleUploadImages(result)}
+                        preload={true}
+                      />
+                    </div>
+                  </div>
+                </div>
+                {this.state.data.photo && <img src={this.state.data.photo} />}
+              </div>
             </div>
             <div className="column">
               <div className="field">
@@ -213,32 +233,11 @@ class EntriesNew extends React.Component {
                 <div className="error-message">{this.state.error.description}</div>}
             </div>
           </div>
-
-          <div className="columns">
-            <div className="column">
-              <div className="field">
-                <label className="label">Photo</label>
-                <div className="control">
-                  <ReactFilestack
-                    apikey={process.env.FILESTACK_KEY}
-                    buttonText="Upload Photo"
-                    className="photo-button"
-                    options={options}
-                    onSuccess={(result) => this.handleUploadImages(result)}
-                    preload={true}
-                  />
-                </div>
-                {this.state.data.photo && <img src={this.state.data.photo} />}
-              </div>
-            </div>
-            <div className="column">
-              <div className="form-submit">
-                <button>Submit</button>
-              </div>
+          <div className="column">
+            <div className="form-submit">
+              <button>Submit</button>
             </div>
           </div>
-
-
 
         </form>
       </div>

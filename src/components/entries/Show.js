@@ -33,11 +33,9 @@ class EntriesShow extends React.Component {
               </div>
             </div>
           </section>
-
-
         </div>
         <div className="show-image">
-          <figure className="image is-16by9">
+          <figure className="image">
             <img src={this.state.photo} />
           </figure>
         </div>
