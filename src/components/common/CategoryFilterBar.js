@@ -44,8 +44,6 @@ class CategoryFilterBar extends React.Component {
     e.preventDefault()
 
     const searchProp = qs.parse(this.props.location.search)
-    console.log(Object.keys(searchProp))
-    console.log(Object.keys(searchProp).includes('search'))
 
     if (Object.keys(searchProp).length === 0 || !Object.keys(searchProp).includes('search')){
       this.props.history.push('/entries?'+'filtercategory=' + this.state.data.filterCategoryTerm)

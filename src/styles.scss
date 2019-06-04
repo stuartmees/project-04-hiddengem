@@ -78,6 +78,10 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
 
 
 //Form styling
+
+.container-form-new .columns{
+  margin-top: 10px;
+}
 form .input, form .textarea{
   border-radius: 3px;
   border: none;
