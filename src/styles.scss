@@ -34,17 +34,24 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
   padding-top: 100px;
 }
 
-.container-map-search{
+.map-filters{
   position: absolute;
   top: 100px;
-  right: 100px;
-  width: 30%;
   z-index: 1;
+  width: 100vw;
 }
 
+.map-filters>.columns{
+  width: 100%;
+  justify-content: space-around;
+}
+
+.map-filters>.columns>.column{
+  width: 30%;
+}
 
 //Search bar styling
-.search-bar{
+.search-bar, .filter-bar{
   display: flex;
 }
 
@@ -54,7 +61,16 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
   width: 80%;
 }
 
-.search-bar button{
+.filter-bar>div{
+  width: 80%;
+  border-radius: 3px 0 0 3px;
+}
+
+.filter-bar>div>div{
+  border-radius: 3px 0 0 3px;
+}
+
+.search-bar button, .filter-bar button{
   border-radius: 0px 3px 3px 0px;
   flex-grow: 1;
   padding: 0;

@@ -4,6 +4,7 @@ import axios from 'axios'
 import ReactMapboxGl, { Popup, Marker } from 'react-mapbox-gl'
 import qs from 'query-string'
 import SearchBar from '../common/SearchBar'
+import CategoryFilterBar from '../common/CategoryFilterBar'
 
 const Map = ReactMapboxGl({
   accessToken: process.env.MAPBOX_ACCESS_TOKEN
@@ -24,11 +25,17 @@ class EntriesIndex extends React.Component {
   }
 
   filterEntries(){
-    const term = qs.parse(this.props.location.search).search
-    const re = new RegExp(term, 'i')
-    const wholeRe = new RegExp('\\b'+term+'\\b', 'i')
+    const search = qs.parse(this.props.location.search).search
+    const reSearch = new RegExp(search, 'i')
+    const reWholeSearch = new RegExp('\\b'+search+'\\b', 'i')
 
-    return this.state.entries.filter(entry => re.test(entry.title) || wholeRe.test(entry.description))
+    const filterCategory = qs.parse(this.props.location.search).filtercategory
+    const reFilterCategory = new RegExp(filterCategory, 'i')
+
+    return this.state.entries.filter(entry =>
+      (reSearch.test(entry.title) || reWholeSearch.test(entry.description))
+      && reFilterCategory.test(entry.category.name)
+    )
   }
 
   componentDidMount() {
@@ -51,8 +58,16 @@ class EntriesIndex extends React.Component {
 
     return(
       <div>
-        <div className="container-map-search">
-          <SearchBar />
+
+        <div className="map-filters">
+          <div className="columns">
+            <div className="column is-one-quarter">
+              <SearchBar />
+            </div>
+            <div className="column is-one-quarter">
+              <CategoryFilterBar />
+            </div>
+          </div>
         </div>
 
         <Map
@@ -102,9 +117,3 @@ class EntriesIndex extends React.Component {
 }
 
 export default EntriesIndex
-
-// {this.state.entries.map(entry =>
-//
-// )}
-
-                    // <img src={this.state.popup.photo}/>
