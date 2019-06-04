@@ -13,7 +13,8 @@ $button-color: #ff9933;
 
 //Shadow variables
 $navbar-shadow: 0 0 9px rgba(0, 0, 0, 0.3);
-$input-shadow: 0px 2px 12px -4px rgba(145,140,145,0.67);
+$input-shadow: 0px 3px 12px -3px rgba(145,140,145,0.67);
+$input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
 
 //Containers
 .container-show{
@@ -95,8 +96,9 @@ button {
   padding: 15px;
 }
 
-
-
+button:hover{
+  box-shadow: $input-shadow-press;
+}
 
 .logo{
   font-family: $logo-font;
