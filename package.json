@@ -7,7 +7,7 @@
     "run:server": "pipenv run flask run --port 4000",
     "run:flask": "pipenv run flask run -p 4000",
     "build": "webpack -p",
-    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0",
+    "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
   },
   "license": "MIT",
   "dependencies": {
