@@ -33,7 +33,7 @@ class EntriesIndex extends React.Component {
     const reFilterCategory = new RegExp(filterCategory, 'i')
 
     return this.state.entries.filter(entry =>
-      (reSearch.test(entry.title) || reWholeSearch.test(entry.description))
+      (reSearch.test(entry.title) || reWholeSearch.test(entry.description) || reWholeSearch.test(entry.location))
       && reFilterCategory.test(entry.category.name)
     )
   }

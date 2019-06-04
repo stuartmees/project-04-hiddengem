@@ -4,10 +4,11 @@ import Select from 'react-select'
 import qs from 'query-string'
 
 const categoryOptions = [
-  { value: 1, label: 'Sleeping' },
-  { value: 2, label: 'Eating' },
-  { value: 3, label: 'Going' },
-  { value: 4, label: 'Doing' }
+  { value: 1, label: 'Sleeping', term: 'Sleeping'},
+  { value: 2, label: 'Eating', term: 'Eating'},
+  { value: 3, label: 'Going', term: 'Going'},
+  { value: 4, label: 'Doing', term: 'Doing'},
+  { value: 5, label: 'Anything', term: ''}
 ]
 
 const selectStyles = {
@@ -36,7 +37,7 @@ class CategoryFilterBar extends React.Component {
   }
 
   handleCategoryChange(selectedCategory) {
-    const data = {  filterCategoryTerm: selectedCategory.label}
+    const data = {  filterCategoryTerm: selectedCategory.term}
     this.setState( {data} )
   }
 

@@ -218,7 +218,6 @@ class EntriesNew extends React.Component {
 
             <div className="column">
               <div className="field">
-
                 <div className="columns">
                   <div className="column">
                     <label className="label">Photo</label>
@@ -245,9 +244,8 @@ class EntriesNew extends React.Component {
                 <button>Submit</button>
               </div>
             </div>
+
           </div>
-
-
 
         </form>
       </div>
