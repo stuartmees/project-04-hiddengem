@@ -19,13 +19,11 @@ class FlashMessages extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.messages && Object.keys(this.state.messages).map(type =>
-          <div key={type} className={'flash-message'}>
-            <div>{this.state.messages[type]}</div>
-          </div>
-        )}
-      </div>
+      this.state.messages && Object.keys(this.state.messages).map(type =>
+        <p key={type} className={'flash-message'}>
+          {this.state.messages[type]}
+        </p>
+      )
     )
   }
 }

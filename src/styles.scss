@@ -212,3 +212,13 @@ a .mapboxgl-popup-content div div{
   padding: 10px;
   margin: 20px 0px 15px 0px;
 }
+
+//Flash message styling
+.flash-message{
+  padding: 20px;
+  background-color: rgba(#9ae7f3, 0.2);
+  height: 15vh;
+  font-family: $default-font-1;
+  color: $logo-color;
+  text-align: center;
+}

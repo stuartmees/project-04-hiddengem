@@ -19,8 +19,8 @@ class App extends React.Component {
     return(
       <Router>
         <main>
-          <FlashMessages />
           <Navbar />
+          <FlashMessages />
           <Switch>
             <Route path="/entries/new" component={EntriesNew} />
             <Route path="/entries/:id" component={EntriesShow} />

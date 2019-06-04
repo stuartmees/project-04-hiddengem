@@ -35,7 +35,6 @@ class EntriesNew extends React.Component {
 
     this.state = {
       data: {
-
       },
       error: {}
     }
@@ -85,6 +84,7 @@ class EntriesNew extends React.Component {
         }
 
         const stateName = res.data.result.address_components.filter(checkComponent)[0].long_name
+
         function matchState(state){
           return state.name === stateName
         }
@@ -111,16 +111,14 @@ class EntriesNew extends React.Component {
   //Makes the HTTP request to API using the state.data as the body of the request=============
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state.data)
+
     const token = Auth.getToken()
+
     axios.post('/api/entries', this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(() => this.props.history.push('/entries'))
-      .catch((res) => {
-        console.log(res.response.data)
-        this.setState(res.response.data)
-      })
+      .then((res) => this.props.history.push(`/entries/${res.data.id}`))
+      .catch((res) => this.setState(res.response.data))
   }
 
   //Gets the states from States model on mount

@@ -37,9 +37,18 @@ class EntriesShow extends React.Component {
             <img src={this.state.photo} />
           </figure>
         </div>
+
+
         <div className="container-show">
-          <div className="show-description">{this.state.description}</div>
+          <p className="show-description">
+            {this.state.description.split('\n').map((text, i) =>
+              <span key={i}>
+                {text}<br />
+              </span>
+            )}
+          </p>
         </div>
+
       </div>
     )
   }
