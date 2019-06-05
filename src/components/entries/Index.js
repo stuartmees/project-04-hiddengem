@@ -25,6 +25,7 @@ class EntriesIndex extends React.Component {
   }
 
   filterEntries(){
+    //Gets search props, parses into object and creates RegExp======================================
     const search = qs.parse(this.props.location.search).search
     const reSearch = new RegExp(search, 'i')
     const reWholeSearch = new RegExp('\\b'+search+'\\b', 'i')
@@ -32,6 +33,7 @@ class EntriesIndex extends React.Component {
     const filterCategory = qs.parse(this.props.location.search).filtercategory
     const reFilterCategory = new RegExp(filterCategory, 'i')
 
+    //Filters Entries based on seacrh and filter terms===============================================
     return this.state.entries.filter(entry =>
       (reSearch.test(entry.title) || reWholeSearch.test(entry.description) || reWholeSearch.test(entry.location))
       && reFilterCategory.test(entry.category.name)
@@ -52,8 +54,6 @@ class EntriesIndex extends React.Component {
   }
 
   render() {
-    if(this.props.location.search) console.log(qs.parse(this.props.location.search))
-
     if(!this.state) return <p>Loading...</p>
 
     return(

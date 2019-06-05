@@ -41,22 +41,18 @@ class CategoryFilterBar extends React.Component {
     this.setState( {data} )
   }
 
+  //Obtains current search prop and constructs the URL appropriately before re-direct=================================
   handleSubmit(e){
     e.preventDefault()
 
     const searchProp = qs.parse(this.props.location.search)
 
-    if (Object.keys(searchProp).length === 0 || !Object.keys(searchProp).includes('search')){
-      this.props.history.push('/entries?'+'filtercategory=' + this.state.data.filterCategoryTerm)
-
-    } else if (Object.keys(searchProp).includes('search') && !Object.keys(searchProp).includes('filtercategory')){
-      this.props.history.push('/entries?'+'search='+searchProp.search+'&filtercategory='+this.state.data.filterCategoryTerm)
-
+    if (!Object.keys(searchProp).includes('search')){
+      this.props.history.push('/entries?filtercategory='+this.state.data.filterCategoryTerm)
     } else {
       this.props.history.push('/entries?search='+searchProp.search+'&filtercategory='+this.state.data.filterCategoryTerm)
     }
   }
-
 
   render(){
     const { category } = this.state.data

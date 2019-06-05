@@ -18,17 +18,14 @@ class SearchBar extends React.Component {
     this.setState( { searchTerm: e.target.value } )
   }
 
+  //Obtains current search prop and constructs the URL appropriately before re-direct.
   handleSubmit(e){
     e.preventDefault()
 
     const searchProp = qs.parse(this.props.location.search)
 
-    if (Object.keys(searchProp).length === 0 || !Object.keys(searchProp).includes('filtercategory')){
-      this.props.history.push('/entries?'+'search=' + this.state.searchTerm)
-
-    } else if (Object.keys(searchProp).includes('filtercategory') && !Object.keys(searchProp).includes('search')){
-      this.props.history.push('/entries?'+'filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
-
+    if (!Object.keys(searchProp).includes('filtercategory')){
+      this.props.history.push('/entries?search='+this.state.searchTerm)
     } else {
       this.props.history.push('/entries?filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
     }
@@ -49,3 +46,14 @@ class SearchBar extends React.Component {
 }
 
 export default withRouter(SearchBar)
+
+
+// if (Object.keys(searchProp).length === 0 || !Object.keys(searchProp).includes('filtercategory')){
+//   this.props.history.push('/entries?'+'search=' + this.state.searchTerm)
+//
+// } else if (Object.keys(searchProp).includes('filtercategory') && !Object.keys(searchProp).includes('search')){
+//   this.props.history.push('/entries?'+'filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
+//
+// } else {
+//   this.props.history.push('/entries?filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
+// }

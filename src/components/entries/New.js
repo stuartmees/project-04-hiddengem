@@ -105,7 +105,6 @@ class EntriesNew extends React.Component {
   handleUploadImages(result) {
     const data = { ...this.state.data, photo: result.filesUploaded[0].url}
     this.setState({ data })
-    // toast.success('New Profile Image Updated!', {containerId: 'B'})
   }
 
   //Makes the HTTP request to API using the state.data as the body of the request=============
@@ -121,7 +120,7 @@ class EntriesNew extends React.Component {
       .catch((res) => this.setState(res.response.data))
   }
 
-  //Gets the states from States model on mount
+  //Gets the states from States model on mount=================================================
   componentDidMount() {
     axios.get('/api/states')
       .then(res => this.setState({states: res.data}))
