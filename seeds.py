@@ -67,6 +67,18 @@ with db_session():
     pondicherry = State(name="Pondicherry")
 
     Entry(
+        title="Majestic shopping town on  majestic lake!",
+        description='Udaipur has a romance of setting unmatched in Rajasthan and arguably in all India – snuggling beside tranquil Lake Pichola, with the purple ridges of the Aravalli Range stretching away in every direction. Fantastical palaces, temples, havelis (traditional, ornately decorated residences) and countless narrow, crooked, timeless streets add the human counterpoint to the city’s natural charms. For the visitor theres the serenity of boat rides on the lakes, the bustle and colour of bazaars, a lively arts scene, the quaint old world feel of its heritage hotels, tempting shops and some lovely countryside to explore on wheels, feet or horseback.',
+        location="Udaipur, Rajasthan, India",
+        state=rajastan,
+        category=going,
+        lng=73.712479,
+        lat=24.585445,
+        created_by=stuseem,
+        photo="https://img.traveltriangle.com/blog/wp-content/uploads/2018/07/udaipur-city-palace-blue-boat-cover-image.jpg"
+    )
+
+    Entry(
         title="Quaint, bustling village perched on ghats.",
         description='Pushkar has a magnetism all of its own – it’s quite unlike anywhere else in Rajasthan. It is world famous for its spectacular Camel Fair, which takes place in the Hindu month of Kartika (October/November). If you are anywhere nearby at the time you would be crazy to miss it. For the rest of the year Pushkar remains a prominent Hindu pilgrimage town, humming with puja (prayers), bells, drums and devotional songs. The town wraps itself around a holy lake featuring 52 bathing ghats and 400 milky-blue temples, including one of the world’s few Brahma temples. The main street is one long bazaar, selling anything to tickle a traveller’s fancy, from hippy-chic tie-dye to didgeridoos. The result is a muddle of religious and tourist scenes. Yet, despite the commercialism, the town remains enchantingly mystic and relaxed. Pushkar is only 11km from Ajmer, separated from it by rugged Nag Pahar (Snake Mountain)',
         location="Pushkar, Rajasthan, India",

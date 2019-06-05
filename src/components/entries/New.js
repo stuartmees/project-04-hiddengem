@@ -214,7 +214,7 @@ class EntriesNew extends React.Component {
           </div>
 
           <div className="columns">
-
+          
             <div className="column">
               <div className="field">
                 <div className="columns">
