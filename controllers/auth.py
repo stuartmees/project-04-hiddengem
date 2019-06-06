@@ -29,10 +29,15 @@ def register():
 def login():
     data = request.get_json()
 
-    user = User.get(email=data.get('email'))
+    if not data.get('email') or data.get('email') == '':
+        return jsonify({'error': 'You need to enter some details!'}), 422
 
     if data.get('password') != data.get('password_confirmation'):
         return jsonify({'error': 'The passwords do not match. Please try again.'}), 401
+
+    user = User.get(email=data.get('email'))
+
+
 
     if not user or not user.is_password_valid(data.get('password')):
         return jsonify({'error': 'Sorry we cannot recognise your details. Please try again.'}), 401

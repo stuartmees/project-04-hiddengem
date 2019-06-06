@@ -17,6 +17,7 @@ class Login extends React.Component {
 
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
+    if(!e.target.value) delete data[e.target.name]
     this.setState( {data} )
   }
 
@@ -29,7 +30,9 @@ class Login extends React.Component {
         Flash.setMessage('success', res.data.message)
         this.props.history.push('/')
       })
-      .catch(error => this.setState(error.response.data))
+      .catch(error => {
+        this.setState(error.response.data)
+      })
   }
 
   render(){
