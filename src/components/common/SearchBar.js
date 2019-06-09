@@ -46,14 +46,3 @@ class SearchBar extends React.Component {
 }
 
 export default withRouter(SearchBar)
-
-
-// if (Object.keys(searchProp).length === 0 || !Object.keys(searchProp).includes('filtercategory')){
-//   this.props.history.push('/entries?'+'search=' + this.state.searchTerm)
-//
-// } else if (Object.keys(searchProp).includes('filtercategory') && !Object.keys(searchProp).includes('search')){
-//   this.props.history.push('/entries?'+'filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
-//
-// } else {
-//   this.props.history.push('/entries?filtercategory='+searchProp.filtercategory+'&search='+this.state.searchTerm)
-// }
