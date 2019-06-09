@@ -26,7 +26,7 @@ project-04
 ### Introduction
 My brief was to create a full-stack web app with a RESTful API. The API was to be made with a Flask app and a PostgreSQL database and it was to be consumed by a React front end.
 
-My app is a website that enables users to register, log in and post details of 'hidden gems' they found and visited in India.
+My app is a website that enables users to register, log in and post details of 'hidden gems' (entries) they found and visited in India.
 
 ![image](https://user-images.githubusercontent.com/35113861/59159496-46f10580-8ac2-11e9-8b2b-90109e441eb9.png)
 
@@ -77,18 +77,12 @@ Throughout the whole website I aimed for a simple and clean design. Utilising wh
 
 
 ### Challenges and wins
-_Describe the biggest challenges.
-  How did you overcome them?
-  Did you decide to pivot because of time constraints?
-  What did you learn from these problems?_
 
-_Describe the wins.
-  What are you most proud of?
-  What did this project help you to understand the most?_
+There are two parts which I really enjoyed coding and saw it as great wins for me: searching and obtaining location details.
 
-There are two parts which I really enjoyed coding and saw it as great wins for me.
+#### Searching
 
-The first being the SearchBar which combined with the CategorFIlterBar. The SearchBar component took the users searchTerm, added it to a query string on the end of the Index component's URL and pushed the the app to that URL:
+The SearchBar component took the users searchTerm, added it to a query string on the end of the Index component's URL and pushed the the app to that URL:
 
 ```
 this.props.history.push('/entries?search='+this.state.searchTerm)
@@ -130,7 +124,7 @@ filterEntries(){
 }
 ```
 
-I realised that if the user filtered from the CategoryFilterBar, the component would push to a new URL that included only the filter category query string, regardless of if there was already a quert string in place. I wanted the new filter to be added to the existing query string and include the searchTerm that was already there.
+I realised that if the user filtered from the CategoryFilterBar, the component would push to a new URL that included only the CategoryFilterBar query string, regardless of if there was already a query string in place. I wanted the new filter to be added to the existing query string and include the searchTerm that was already there.
 
 I therefore included code, that on submit of the SearchBar component and the CategoryFilterBar component checked to see if there was already a query string in the props object of the component and constructed the URL appropriately:
 
@@ -149,7 +143,89 @@ handleSubmit(e){
 }
 ```
 
-The above is the conditionals for the SearchBar. Corresponding conditionals can be seen in the CategoryFilterBar component.
+The above is the conditional URL construction for the SearchBar. Corresponding conditional construction can be seen in the CategoryFilterBar component.
+
+#### Location Details
+
+AsyncSelect from ReactSelect was used to enable users to enter the name of the nearest town for their entry.
+
+The drop down list of location options based on their input was populated via a Google Places API Autocomplete request. To avoid CORS (Cross-Origin Resource Sharing) issues a this request was send from the front end via an axios request to a route in the backend:
+
+```
+//Get the location options from Google Places API based on user input to react select==================================================================================
+getLocationOptions (searchTerm) {
+  return axios.get('/api/locations/'+searchTerm)
+    .then(res => {
+      return res.data.predictions.map(prediction => {
+        return { value: prediction.description, label: prediction.description, location_id: prediction.place_id }
+      })
+    })
+}
+```
+
+The Python Requests library was then used to make the requests to the Google API to get the location suggestions.
+
+```
+@router.route('/locations/<string:location>', methods=['GET'])
+@db_session
+def index(location):
+    req = requests.get('https://maps.googleapis.com/maps/api/place/autocomplete/json',
+        params={
+            'key': google_geo_key,
+            'input':location
+            }
+    )
+
+    return jsonify(req.json())
+```
+
+Once the user selected the location they wanted a similar chain of events occured to get the details requireed details based on the place_id of the location from the Google Places API.
+
+```
+@router.route('/locations/details/<string:location_id>', methods=['GET'])
+@db_session
+def gps(location_id):
+    req = requests.get('https://maps.googleapis.com/maps/api/place/details/json',
+        params={
+            'key': google_geo_key,
+            'placeid':location_id
+            }
+    )
+
+    return jsonify(req.json())
+```
+
+```
+updateLocation(location) {
+  axios.get('api/locations/details/'+location.location_id)
+    .then(res => {
+
+      const geoCords = res.data.result.geometry.location
+
+      function checkComponent(component){
+        return component.types.includes('administrative_area_level_1')
+      }
+
+      const stateName = res.data.result.address_components.filter(checkComponent)[0].long_name
+
+      function matchState(state){
+        return state.name === stateName
+      }
+
+      const stateId = this.state.states.filter(matchState)[0].id
+
+      const data = {
+        ...this.state.data,
+        location: location.value,
+        state_id: stateId,
+        lat: geoCords.lat,
+        lng: geoCords.lng
+      }
+      this.setState( {data} )
+    })
+}
+```
+
 
 
 
