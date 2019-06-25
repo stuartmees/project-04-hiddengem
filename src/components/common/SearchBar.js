@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
       <form onSubmit={this.handleSubmit} className="search-bar">
         <input
           className="input"
-          placeholder="What you looking for?"
+          placeholder="What are you looking for?"
           onChange={this.handleChange}
         />
         <button >Find it</button>
