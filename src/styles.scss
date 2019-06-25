@@ -46,10 +46,6 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
   justify-content: space-around;
 }
 
-// .map-filters>.columns>.column{
-//   width: 30%;
-// }
-
 //Search bar styling
 .search-bar, .filter-bar{
   display: flex;
@@ -294,11 +290,22 @@ a .mapboxgl-popup-content div div{
     width: 100%
   }
 
+  .container-form-new{
+    width: 90%;
+  }
+
   .map-filters{
     position: absolute;
     bottom: 10px;
     height: 127px;
   }
 
+  .container-show{
+    width: 90%;
+  }
+
+  .show-image{
+    width: 95%;
+  }
 
 }
