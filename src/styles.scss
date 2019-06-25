@@ -23,7 +23,7 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
 }
 
 .container-form{
-  width: 30%;
+  width: 432px;
   margin: 30px auto 100px auto;
   // 60px auto 150px auto;
 }
@@ -36,8 +36,8 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
 
 .map-filters{
   position: absolute;
-  top: 100px;
-  z-index: 1;
+  // top: 100px;
+  z-index: 4;
   width: 100vw;
 }
 
@@ -46,9 +46,9 @@ $input-shadow-press: 0px 3px 12px -10px rgba(145,140,145,0.67);
   justify-content: space-around;
 }
 
-.map-filters>.columns>.column{
-  width: 30%;
-}
+// .map-filters>.columns>.column{
+//   width: 30%;
+// }
 
 //Search bar styling
 .search-bar, .filter-bar{
@@ -97,7 +97,6 @@ form button, form>.columns>.column>button{
   box-shadow: $input-shadow;
   font-family: $default-font-1;
   font-size: 15px;
-  min-width: 110px;
 }
 
 form button:hover, form .columns .column button:hover{
@@ -109,16 +108,19 @@ form button:hover, form .columns .column button:hover{
   flex-direction: row-reverse;
 }
 
+.form-submit button{
+  min-width: 110px;
+  height: 36px;
+  margin-top: 20px;
+}
+
+
 form .columns .column .control button{
   background-color: $logo-color;
 }
 
 label{
   font-family: $title-font;
-}
-
-button {
-  padding: 15px;
 }
 
 button:hover{
@@ -151,8 +153,6 @@ button:hover{
 .navbar-item{
   font-family: $title-font;
 }
-
-
 
 .home-image-1{
   width: 100vw/3;
@@ -254,4 +254,51 @@ a .mapboxgl-popup-content div div{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+//tablet ======================================
+
+@media only screen and (max-width: 1024px) {
+  .container-form{
+    width: 60%;
+  }
+
+  .map-filters >.columns {
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .map-filters {
+      top: 100px;
+  }
+}
+
+
+//mobile ======================================
+@media only screen and (max-width: 768px) {
+  .container-form{
+    width: 90%;
+  }
+
+  .logo{
+    font-family: $logo-font;
+    color: $logo-color;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 70px;
+  }
+
+  .form-submit button {
+    width: 100%
+  }
+
+  .map-filters{
+    position: absolute;
+    bottom: 10px;
+    height: 127px;
+  }
+
+
 }

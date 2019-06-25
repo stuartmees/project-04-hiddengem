@@ -15,13 +15,31 @@ project-04
 * CSS
 * Bulma
 * Axios
-* React Asyn Select
+* Python Request Library
+* Query String
+* React Async Select
 * ReactMapBox-GL
 * Google Places API
 * webpack
 * git/GitHub
 * Insomnia
 
+### Installation
+Download the folders and files into a local directory.
+
+From within the directory in your CLI:
+
+```
+yarn install
+```
+
+or
+
+```
+npm install
+```
+
+to install the dependencies.
 
 ### Introduction
 My brief was to create a full-stack web app with a RESTful API. The API was to be made with a Flask app and a PostgreSQL database and it was to be consumed by a React front end.
@@ -30,15 +48,13 @@ My app is a website that enables users to register, log in and post details of '
 
 ![image](https://user-images.githubusercontent.com/35113861/59159496-46f10580-8ac2-11e9-8b2b-90109e441eb9.png)
 
-
 ## Process
-_Describe the process of building the game. How did you get started? How did you manage your time? How would you do things next time?_
 
-Like I did previously I made wireframes that enabled me to ascertain what functionality I wanted the website to have. This furthermore guided the desgin om the PostgreSQL datbase.
+I started with wireframes that enabled me to ascertain what functionality I wanted the website to have. This furthermore guided the design of the PostgreSQL database.
 
 The Flask App and database was the first thing to be created to enable entry and user info to be stored.
 
-Once this API was in place, and all routes tested in Insomnia, the building of the React app could begin to consume our API.
+Once this API was in place, and all routes tested in Insomnia, the building of the React app could begin to consume my API.
 
 ### Web App Overview
 
@@ -149,7 +165,7 @@ The above is the conditional URL construction for the SearchBar. Corresponding c
 
 AsyncSelect from ReactSelect was used to enable users to enter the name of the nearest town for their entry.
 
-The drop down list of location options based on their input was populated via a Google Places API Autocomplete request. To avoid CORS (Cross-Origin Resource Sharing) issues a this request was send from the front end via an axios request to a route in the backend:
+The drop down list of location options based on their input was populated via a Google Places API Autocomplete request. To avoid CORS (Cross-Origin Resource Sharing) issues a this request was send from the front end via an AJAX request to a route in the backend:
 
 ```
 //Get the location options from Google Places API based on user input to react select==================================================================================
@@ -225,9 +241,6 @@ updateLocation(location) {
     })
 }
 ```
-
-
-
 
 ## Future features
 _If you were to revisit this project in the future what features would you add?_

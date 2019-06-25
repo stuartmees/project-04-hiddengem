@@ -60,11 +60,11 @@ class EntriesIndex extends React.Component {
       <div>
 
         <div className="map-filters">
-          <div className="columns">
-            <div className="column is-one-quarter">
+          <div className="columns ">
+            <div className="column is-one-third-desktop">
               <SearchBar />
             </div>
-            <div className="column is-one-quarter">
+            <div className="column is-one-third-desktop">
               <CategoryFilterBar />
             </div>
           </div>
