@@ -242,5 +242,11 @@ updateLocation(location) {
 }
 ```
 
+
 ## Future features
 _If you were to revisit this project in the future what features would you add?_
+
+* In the future I would want to add a few feature to the EntriesShow page:
+  * Links to near by Gems.
+  * API external APIs have suggestions on accommodation near by.
+  * On mobile i would like to EntriesShow page to not be a separate page but just slid up for the bottom of the map and sit ontop of the map.
