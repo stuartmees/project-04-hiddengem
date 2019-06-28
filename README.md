@@ -41,7 +41,7 @@ npm install
 
 to install the dependencies.
 
-### Introduction
+## Introduction
 My brief was to create a full-stack web app with a RESTful API. The API was to be made with a Flask app and a PostgreSQL database and it was to be consumed by a React front end.
 
 My app is a website that enables users to register, log in and post details of 'hidden gems' (entries) they found and visited in India.
@@ -56,7 +56,7 @@ The Flask App and database was the first thing to be created to enable entry and
 
 Once this API was in place, and all routes tested in Insomnia, the building of the React app could begin to consume my API.
 
-### Web App Overview
+## Web App Overview
 
 A one page app was created that rendered different components depending on the path:
 
@@ -92,11 +92,11 @@ All the information within an entry is viewed in the Show component, which can b
 Throughout the whole website I aimed for a simple and clean design. Utilising white space as much as possible and using only 3 colours consistently to result in a modern and uncluttered web app.
 
 
-### Challenges and wins
+## Challenges and wins
 
 There are two parts which I really enjoyed coding and saw it as great wins for me: searching and obtaining location details.
 
-#### Searching
+### Searching
 
 The SearchBar component took the users searchTerm, added it to a query string on the end of the Index component's URL and pushed the the app to that URL:
 
@@ -161,7 +161,7 @@ handleSubmit(e){
 
 The above is the conditional URL construction for the SearchBar. Corresponding conditional construction can be seen in the CategoryFilterBar component.
 
-#### Location Details
+### Location Details
 
 AsyncSelect from ReactSelect was used to enable users to enter the name of the nearest town for their entry.
 
@@ -244,7 +244,6 @@ updateLocation(location) {
 
 
 ## Future features
-_If you were to revisit this project in the future what features would you add?_
 
 * In the future I would want to add a few feature to the EntriesShow page:
   * Links to near by Gems.
