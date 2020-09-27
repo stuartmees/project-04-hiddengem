@@ -5,7 +5,9 @@ from config.environment import db_uri
 app = Flask(__name__, static_folder='dist')
 
 db = Database()
-db.bind('postgres', db_uri)
+# db.bind('postgres', db_uri)
+
+db.bind('postgres', user='stuseem', password='time', database='stuseem')
 
 # pylint: disable=W0611,C0413
 from config import routes

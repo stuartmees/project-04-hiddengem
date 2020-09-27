@@ -33,7 +33,7 @@ class EntriesIndex extends React.Component {
     const filterCategory = qs.parse(this.props.location.search).filtercategory
     const reFilterCategory = new RegExp(filterCategory, 'i')
 
-    //Filters Entries based on seacrh and filter terms===============================================
+    //Filters Entries based on search and filter terms===============================================
     return this.state.entries.filter(entry =>
       (reSearch.test(entry.title) || reWholeSearch.test(entry.description) || reWholeSearch.test(entry.location))
       && reFilterCategory.test(entry.category.name)

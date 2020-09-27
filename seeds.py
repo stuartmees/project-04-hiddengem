@@ -183,7 +183,7 @@ with db_session():
         lng=76.35675599999999,
         location="Alleppey Backwater, Punnamada, Kottankulangara, Alappuzha, Kerala, India",
         created_by=stuseem,
-        photo="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/30741858_10156236206979929_7381770109930438656_o.jpg?_nc_cat=105&_nc_ht=scontent.flhr4-1.fna&oh=5b28fc2fec68543889459c6221734ca3&oe=5D5B1DE1"
+        photo="https://www.keralabackwater.com/pictures/package/internal_image/serene-backwaters-kerala-75.jpeg"
     )
 
     db.commit()

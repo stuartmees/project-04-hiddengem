@@ -38,6 +38,7 @@ class CategoryFilterBar extends React.Component {
 
   handleCategoryChange(selectedCategory) {
     const data = {  filterCategoryTerm: selectedCategory.term}
+    
     this.setState( {data} )
   }
 

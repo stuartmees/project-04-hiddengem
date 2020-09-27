@@ -49,16 +49,15 @@ class EntriesNew extends React.Component {
   //Sets all other inputs values to state
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
+
     this.setState( {data} )
   }
 
   //Sets the selected category's id to state==============================================
   handleCategoryChange(selectedCategory) {
-
     const data = { ...this.state.data, category_id: selectedCategory.value}
-    // this.setState({ data: {category_id: selectedCategory.value}
+
     this.setState( {data} )
-    console.log('Category selected:', selectedCategory)
   }
 
   //Get the location options from Google Places API based on user input to react select==================================================================================
@@ -75,7 +74,6 @@ class EntriesNew extends React.Component {
   updateLocation(location) {
     axios.get('api/locations/details/'+location.location_id)
       .then(res => {
-        console.log(res.data.result.geometry)
 
         const geoCords = res.data.result.geometry.location
 
@@ -98,12 +96,14 @@ class EntriesNew extends React.Component {
           lat: geoCords.lat,
           lng: geoCords.lng
         }
+
         this.setState( {data} )
       })
   }
 
   handleUploadImages(result) {
     const data = { ...this.state.data, photo: result.filesUploaded[0].url}
+    
     this.setState({ data })
   }
 
